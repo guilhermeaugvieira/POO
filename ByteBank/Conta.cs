@@ -1,29 +1,25 @@
 using System;
 
 namespace ByteBank{
-  public class Conta{
-    private readonly string _titular;
+  class Conta{
     private int _numeroAgencia;
     private int _numero;
     private double _saldo;
+    private Cliente _titular;
+    /*Para usar como propriedade, o valor recebido no set é reconhecido como value
+      O get não pode usar referência circular (retornar a própria propriedade)
+    */
 
-    public Conta(
-      string titular, 
+    public Conta( 
       int numeroAgencia, 
       int numero, 
-      double saldo
+      double saldo,
+      ByteBank.Cliente titular //Utilização de namespace
     ){
       this._titular = titular;
       this._numeroAgencia = numeroAgencia;
       this._numero = numero;
       this._saldo = saldo;
-    }
-
-    public void getConta(){
-      Console.WriteLine("Titular: " + this._titular);
-      Console.WriteLine("Agencia: " + this._numeroAgencia);
-      Console.WriteLine("Numero: " + this._numero);
-      Console.WriteLine("Saldo: " + this._saldo);
     }
 
     public double getSaldo(){
@@ -38,8 +34,12 @@ namespace ByteBank{
       return this._numeroAgencia;
     }
 
-    public string getTitular(){
+    public Cliente getTitular(){
       return this._titular;
+    }
+
+    public void setTitular(Cliente titular){
+      this._titular = titular;
     }
 
     public void setNumeroAgencia(int numeroAgencia){
@@ -50,8 +50,13 @@ namespace ByteBank{
       this._numero = numero;
     }
 
-    public void alterarSaldo(double valor){
-      this._saldo += valor;
+    public bool alterarSaldo(double valor){
+      if((this._saldo + valor)>0){
+        this._saldo += valor;
+        return true;
+      }
+
+      return false;
     }
   }
 }

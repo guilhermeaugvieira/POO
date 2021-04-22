@@ -6,9 +6,10 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-           Conta guilherme = new Conta("Guilherme Augusto Vieira", 010, 874437, 12000.00);
+           Cliente guilherme = new Cliente("Guilherme Augusto Vieira", "13097988696", "Desenvolvedor");
+           Conta CcGuilherme = new Conta(3160, 010874437, 12000, guilherme);
 
-           guilherme.getConta();
+           Console.WriteLine(CcGuilherme.getTitular().getCPF());
         }
     }
 }
