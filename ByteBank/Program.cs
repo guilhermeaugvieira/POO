@@ -6,8 +6,8 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-           Cliente guilherme = new Cliente("Guilherme Augusto Vieira", "13097988696", "Desenvolvedor");
-           Conta CcGuilherme = new Conta(3160, 010874437, 12000, guilherme);
+           Cliente guilherme = new Cliente("Guilherme", "11111111111", "Desenvolvedor");
+           Conta CcGuilherme = new Conta(0001, 111111111, 1.99, guilherme);
            CcGuilherme.titular = guilherme;
 
            Console.WriteLine(CcGuilherme.titular.CPF);
