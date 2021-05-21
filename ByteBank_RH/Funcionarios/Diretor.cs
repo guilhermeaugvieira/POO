@@ -1,13 +1,21 @@
+using ByteBank_RH.Funcionarios.Interfaces;
+
 namespace ByteBank_RH.Funcionarios{
-  class Diretor:Funcionario{
-    public Diretor(string Nome, string CPF, double Salario) : base(Nome, CPF, Salario){
-      this.Nome = Nome;
-      this.CPF = CPF;
-      this.Salario = Salario;
+  class Diretor : FuncionarioAutenticavel{
+    public Diretor(string senha, string nome, string cpf, double salario) : base(senha, nome, cpf, salario)
+    {
+      Senha = senha;
     }
+
+    public override void AumentarSalario()
+    {
+      Salario *= 1.15;
+    }
+
     public override double GetBonificacao(){
-      return base.GetBonificacao() + this.Salario;
-      // Base referencia a classe herdade
+      return Salario * 0.5;
+      // return base.GetBonificacao() + Salario;
+      // Base referencia a classe herdada
     }
   }
 }
